@@ -51,7 +51,7 @@ namespace Library.API.Migrations
                         new
                         {
                             Id = new Guid("d28888e9-2ba9-473a-a40f-e38cb54f9b35"),
-                            DateOfBirth = new DateTimeOffset(new DateTime(1650, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -5, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1650, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -4, 0, 0, 0)),
                             FirstName = "Berry",
                             LastName = "Griffin Beak Eldritch",
                             MainCategory = "Ships"
@@ -59,7 +59,7 @@ namespace Library.API.Migrations
                         new
                         {
                             Id = new Guid("da2fd609-d754-4feb-8acd-c4f9ff13ba96"),
-                            DateOfBirth = new DateTimeOffset(new DateTime(1668, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -5, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1668, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -4, 0, 0, 0)),
                             FirstName = "Nancy",
                             LastName = "Swashbuckler Rye",
                             MainCategory = "Rum"
@@ -91,7 +91,7 @@ namespace Library.API.Migrations
                         new
                         {
                             Id = new Guid("2aadd2df-7caf-45ab-9355-7f6332985a87"),
-                            DateOfBirth = new DateTimeOffset(new DateTime(1723, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -5, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1723, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -4, 0, 0, 0)),
                             FirstName = "Rutherford",
                             LastName = "Fearless Cloven",
                             MainCategory = "General debauchery"
@@ -99,7 +99,7 @@ namespace Library.API.Migrations
                         new
                         {
                             Id = new Guid("2ee49fe3-edf2-4f91-8409-3eb25ce6ca51"),
-                            DateOfBirth = new DateTimeOffset(new DateTime(1721, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -5, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1721, 10, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -4, 0, 0, 0)),
                             FirstName = "Atherton",
                             LastName = "Crow Ridley",
                             MainCategory = "Rum"
