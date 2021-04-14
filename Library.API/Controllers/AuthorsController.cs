@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Library.API.Helpers;
+using Library.API.Models;
 using Library.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,16 +16,19 @@ namespace Library.API.Controllers
 	public class AuthorsController : ControllerBase
 		{
 		private readonly ILibraryRepository _libraryRepository;
+		private readonly IMapper _mapper;
 
-		public AuthorsController(ILibraryRepository libraryRepository) {
+		public AuthorsController(ILibraryRepository libraryRepository,IMapper mapper) {
 			_libraryRepository = libraryRepository ?? throw new ArgumentException(nameof(libraryRepository));
+			_mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 		}
 
-		[HttpGet("")]
-		public IActionResult GetAuthors() {
-
+		[HttpGet()]
+		[HttpHead]
+		public ActionResult<IEnumerable<AuthorDTO>> GetAuthors() {
+			
 			var authorsFromRepo = _libraryRepository.GetAuthors();
-			return Ok(authorsFromRepo);
+			return Ok(_mapper.Map<IEnumerable<AuthorDTO>>(authorsFromRepo));
 		}
 
 		[HttpGet("{authorId}")]
@@ -32,7 +38,7 @@ namespace Library.API.Controllers
 			if (authorsFromRepo == null) {
 				return NotFound();
 			}
-			return new JsonResult(authorsFromRepo);
+			return Ok(_mapper.Map<AuthorDTO>(authorsFromRepo));
 		}
 	}
 }
