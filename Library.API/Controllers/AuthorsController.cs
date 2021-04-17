@@ -11,15 +11,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Library.API.Controllers
 
-{ 
+{
 	[ApiController]
 	[Route("api/authors")]
 	public class AuthorsController : ControllerBase
-		{
+	{
 		private readonly ILibraryRepository _libraryRepository;
 		private readonly IMapper _mapper;
 
-		public AuthorsController(ILibraryRepository libraryRepository,IMapper mapper) {
+		public AuthorsController(ILibraryRepository libraryRepository, IMapper mapper) {
 			_libraryRepository = libraryRepository ?? throw new ArgumentException(nameof(libraryRepository));
 			_mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 		}
@@ -27,12 +27,12 @@ namespace Library.API.Controllers
 		[HttpGet()]
 		[HttpHead]
 		public ActionResult<IEnumerable<AuthorDTO>> GetAuthors(AuthorsResourceParameters authorsResourceParameters) {
-			
+
 			var authorsFromRepo = _libraryRepository.GetAuthors(authorsResourceParameters);
 			return Ok(_mapper.Map<IEnumerable<AuthorDTO>>(authorsFromRepo));
 		}
 
-		[HttpGet("{authorId}",Name ="GetAuthor")]
+		[HttpGet("{authorId}", Name = "GetAuthor")]
 		public IActionResult GetAuthor(Guid authorId)
 		{
 			var authorsFromRepo = _libraryRepository.GetAuthor(authorId);
@@ -50,7 +50,7 @@ namespace Library.API.Controllers
 			_libraryRepository.Save();
 
 			var authorToReturn = _mapper.Map<AuthorDTO>(authorEntity);
-			return CreatedAtRoute("GetAuthor",new { authorId = authorToReturn.Id},authorToReturn);
+			return CreatedAtRoute("GetAuthor", new { authorId = authorToReturn.Id }, authorToReturn);
 		}
  	}
 }
