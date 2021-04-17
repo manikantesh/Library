@@ -17,6 +17,8 @@ namespace Library.API.Profiles
 
 			.ForMember(dest => dest.Age,
 			opt => opt.MapFrom(src => src.DateOfBirth.GetCurrentAge()));
+
+			CreateMap<Models.AuthorForCreationDTO, Entities.Author>();
 		}
 	}
 }
