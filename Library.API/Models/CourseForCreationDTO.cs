@@ -7,14 +7,8 @@ using System.Threading.Tasks;
 
 namespace Library.API.Models
 {
-	[CourseTitleMustBeDifferentFromDescription(ErrorMessage ="Title must be different than Description")]
-	public class CourseForCreationDTO //: IValidatableObject
+	public class CourseForCreationDTO : CourseForManipulationDTO //: IValidatableObject
 	{
-		[Required(ErrorMessage = "You should fill out a title")]
-		[MaxLength(100,ErrorMessage = "No more than 100 characters")]
-		public string Title { get; set; }
-		[MaxLength(1500,ErrorMessage = "No more than 1500 characters")]
-		public string Description { get; set; }
 
 		/*public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
