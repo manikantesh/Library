@@ -142,6 +142,25 @@ namespace Library.API.Controllers
 			return NoContent();
 		}
 
+		[HttpDelete("{courseId}")]
+		public ActionResult DeleteCourseForAuthor(Guid authorId, Guid courseId) {
+			if (!_libraryRepository.AuthorExists(authorId))
+			{
+				return NotFound();
+			}
+			var coursesForAuthorFromRepo = _libraryRepository.GetCourse(authorId, courseId);
+
+			if (coursesForAuthorFromRepo == null)
+			{
+				return NotFound();
+			}
+
+			_libraryRepository.DeleteCourse(coursesForAuthorFromRepo);
+			_libraryRepository.Save();
+
+			return NoContent();
+		}
+
 		public override ActionResult ValidationProblem([ActionResultObjectValue] ModelStateDictionary modelStateDictionary)
 		{
 			var options = HttpContext.RequestServices
@@ -149,5 +168,6 @@ namespace Library.API.Controllers
 
 			return (ActionResult)options.Value.InvalidModelStateResponseFactory(ControllerContext);
 		}
+
 	}
 }

@@ -52,5 +52,18 @@ namespace Library.API.Controllers
 			var authorToReturn = _mapper.Map<AuthorDTO>(authorEntity);
 			return CreatedAtRoute("GetAuthor", new { authorId = authorToReturn.Id }, authorToReturn);
 		}
+
+		[HttpDelete("{authorId}")]
+		public ActionResult DeleteAuthor(Guid authorId) {
+			var authorFromRepo = _libraryRepository.GetAuthor(authorId);
+
+			if (authorFromRepo == null) {
+				return NotFound();
+			}
+
+			_libraryRepository.DeleteAuthor(authorFromRepo);
+			_libraryRepository.Save();
+			return NoContent();
+		}
  	}
 }
